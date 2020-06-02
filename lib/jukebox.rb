@@ -8,19 +8,19 @@ end
 
 def list(songs)
 	songs.each_with_index do |song, index|
-		indexplusone = index + 1
-    puts "#{indexplusone}. #{song}"
+    puts "#{index + 1}. #{song}"
   end
 end
 
-def play(song_name)
+def play(songs)
 	puts "Please enter a song name or number:"
-  song = gets.strip
+  song_name = gets.strip
+  song_number = song_name.to_i
 
-  if (1..9).to_a.index(song.to_i) != nil
-    puts "Playing #{song_name[song.to_i - 1]}"
-  elsif song_name.index(song) != nil
-    puts "Playing #{song}"
+  if song_number != nil && 0 < song_number && song_number < 10
+    puts "Playing #{songs[song_number - 1]}"
+  elsif songs.index(song_name) != nil
+    puts "Playing #{song_name}"
   else
     puts "Invalid input, please try again"
   end
